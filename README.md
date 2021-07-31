@@ -47,6 +47,21 @@ npm install webpack-dev-server -g
 npm install web3
 ```
 
+### Important
+
+Dependencies versions:
+* Truffle: v5.4.2 (core: 5.4.2)
+* Truffle Hdwallet Provider: 1.0.17
+* Openzeppelin Solidity: 2.3.0
+* Solidity: v0.5.16 (solc-js)
+* Node: v14.17.0
+* Web3.js: v1.4.0
+
+Token info:
+* ERC-721 Name: Polaris Token
+* ERC-721 Token Symbol: POL
+* ERC-721 Token Address: https://rinkeby.etherscan.io/token/0xaf16643c573b93bbe2b59593a06320c889ef8bd5
+
 ### Run the application
 
 1. Clean the frontend
