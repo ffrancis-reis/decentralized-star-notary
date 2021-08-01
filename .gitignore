@@ -75,7 +75,6 @@ typings/
 # FuseBox cache
 .fusebox/
 /build
-/package-lock.json
 /yarn.lock
 /app/yarn.lock
 /app/package-lock.json

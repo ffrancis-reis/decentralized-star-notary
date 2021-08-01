@@ -98,23 +98,23 @@ it("lets 2 users exchange stars", async () => {
   let instance = await StarNotary.deployed();
   let starId1 = 7;
   let starId2 = 8;
-  let accountId1 = accounts[1];
-  let accountId2 = accounts[2];
+  let accountId = accounts[1];
 
-  await instance.createStar("Gemini Sigma", starId1, { from: accountId1 });
-  await instance.createStar("Crescent Nebula", starId2, { from: accountId2 });
+  await instance.createStar("Gemini Sigma", starId1, { from: owner });
+  await instance.createStar("Crescent Nebula", starId2, { from: accountId });
+
+  let preOwner1 = await instance.ownerOf.call(starId1);
+  let preOwner2 = await instance.ownerOf.call(starId2);
+
+  assert.notEqual(preOwner1, preOwner2);
+
+  await instance.exchangeStars(starId1, starId2);
 
   let owner1 = await instance.ownerOf.call(starId1);
   let owner2 = await instance.ownerOf.call(starId2);
 
-  assert.notEqual(owner1, owner2);
-
-  await instance.exchangeStars(starId1, starId2);
-
-  owner1 = await instance.ownerOf.call(starId1);
-  owner2 = await instance.ownerOf.call(starId2);
-
-  assert.equal(owner1, owner2);
+  assert.equal(preOwner1, owner2);
+  assert.equal(preOwner2, owner1);
 });
 
 it("lets a user transfer a star", async () => {
